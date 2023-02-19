@@ -1,0 +1,24 @@
+.title{
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.title:hover{
+    background-color: #38383a;
+}
+.shadow{
+    box-shadow: 0 4px 8px 0  rgba(190, 188, 188, 0.19), 0 0px 10px 0 rgba(190, 188, 188, 0.19);
+}
+.scroll{
+    overflow: auto;
+}
+
+.scroll::-webkit-scrollbar {
+    display: none;
+}
+.hov{
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.hov:hover{
+    background-color:  #d9d9e3;
+}
