@@ -1,16 +1,7 @@
-import React, { useState } from "react";
-import Form from '../componants/Form'
+import React, { useContext, useEffect, useState } from "react";
+import Form from "../componants/Form";
 
-import {
-  Container,
-  Grid,
-  GridItem,
-  Box,
-  Input,
-  Text,
-  Divider,
-  Center,
-} from "@chakra-ui/react";
+import { Grid, GridItem, Box, Text, Divider } from "@chakra-ui/react";
 import {
   AddIcon,
   ChatIcon,
@@ -19,28 +10,29 @@ import {
   StarIcon,
   UnlockIcon,
 } from "@chakra-ui/icons";
-import { Button } from "@chakra-ui/react";
+
 import Homyone from "../componants/Homyone";
 import HomyTwo from "../componants/HomyTwo";
+import { ApiContext } from "../context/ApiProvider";
 
 function Home() {
-  const [isAsked, setIsAsked] = useState(false);
-  const handleClick = () => {
-    setIsAsked(true);
-  };
-  const handleKey = () => {
-    if (event.key === "Enter") {
-      setIsAsked(true);
+  const { allMessages } = useContext(ApiContext);
+  const [isMessages, setIsMessages] = useState(false);
+
+  useEffect(() => {
+    if (allMessages.length > 0) {
+      setIsMessages(true);
     }
-  };
+  }, [allMessages]);
+
   return (
     <>
       <Box>
-        <Grid display={"flex"} h="100vh" >
+        <Grid display={"flex"} h="100vh">
           <GridItem
             bg="#202123"
             minW={260}
-            display={{base: 'none', md:"flex"}}
+            display={{ base: "none", md: "flex" }}
             flexDirection="column"
             justifyContent="space-between"
           >
@@ -78,9 +70,9 @@ function Home() {
                 className="title"
               >
                 <ChatIcon fontSize={14} marginTop={"6px"} />
-                <Text fontSize={14} marginTop={"3px"} marginLeft={4} >
+                <Text fontSize={14} marginTop={"3px"} marginLeft={4}>
                   {" "}
-                  Hello World Program
+                  Hello World
                 </Text>
               </Box>
             </Box>
@@ -98,7 +90,7 @@ function Home() {
                 className="title"
               >
                 <StarIcon fontSize={14} marginTop={"6px"} />
-                <Text fontSize={14} marginTop={"3px"} marginLeft={4} >
+                <Text fontSize={14} marginTop={"3px"} marginLeft={4}>
                   {" "}
                   Upgrage To Plus
                 </Text>
@@ -114,7 +106,7 @@ function Home() {
                 className="title"
               >
                 <MoonIcon fontSize={14} marginTop={"6px"} />
-                <Text fontSize={14} marginTop={"3px"} marginLeft={4} >
+                <Text fontSize={14} marginTop={"3px"} marginLeft={4}>
                   {" "}
                   Dark Mode
                 </Text>
@@ -130,7 +122,7 @@ function Home() {
                 className="title"
               >
                 <ExternalLinkIcon fontSize={14} marginTop={"6px"} />
-                <Text fontSize={14} marginTop={"3px"} marginLeft={4} >
+                <Text fontSize={14} marginTop={"3px"} marginLeft={4}>
                   {" "}
                   Update & FAQ
                 </Text>
@@ -146,7 +138,7 @@ function Home() {
                 className="title"
               >
                 <UnlockIcon fontSize={14} marginTop={"6px"} />
-                <Text fontSize={14} marginTop={"3px"} marginLeft={4} >
+                <Text fontSize={14} marginTop={"3px"} marginLeft={4}>
                   {" "}
                   Log out
                 </Text>
@@ -160,8 +152,8 @@ function Home() {
               flexDir={"column"}
               justifyContent={"space-between"}
             >
-              {/* {isAsked ? <HomyTwo /> : <Homyone />} */}
-              <HomyTwo />
+              {isMessages ? <HomyTwo /> : <Homyone />}
+              {/* <HomyTwo /> */}
 
               <Form />
             </Box>

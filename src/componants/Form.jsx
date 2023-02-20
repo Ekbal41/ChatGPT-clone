@@ -2,17 +2,41 @@ import { Box, Button, Center, Input, Text } from "@chakra-ui/react";
 import React from "react";
 import { useContext } from "react";
 import { ApiContext } from "../context/ApiProvider";
+import { Configuration, OpenAIApi } from "openai";
 
 function Form() {
   const { message, setMessage, setAllMessages, allMessages } =
     useContext(ApiContext);
 
-  const getRes = () => {
-    if (message && message.length > 5) {
+  const getRes = async () => {
+    if (message && message.length > 0) {
+      const configuration = new Configuration({
+        organization: "org-hGs4tZBO2p7ktqxJ9OBXZfl4",
+        apiKey: "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",
+      });
+
+      const openai = new OpenAIApi(configuration);
+      const response = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: message,
+        max_tokens: 100,
+        temperature: 0.9,
+      });
+      console.log(response.data.choices[0].text);
+
       setAllMessages((prev) => [
         ...prev,
         {
-          message: "This if from the bot",
+          message: response.data.choices[0].text,
+          type: "bot",
+          time: "12:00",
+        },
+      ]);
+    } else {
+      setAllMessages((prev) => [
+        ...prev,
+        {
+          message: "sorry, I didn't get that",
           type: "bot",
           time: "12:00",
         },
@@ -20,19 +44,9 @@ function Form() {
     }
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (!message) return;
-    if (message.length < 5) {
-      setAllMessages((prev) => [
-        ...prev,
-        {
-          message: "sorry, I can't understand you",
-          type: "man",
-          time: "12:00",
-        },
-        setMessage(""),
-      ]);
-    }
+
     setAllMessages((prev) => [
       ...prev,
       {
@@ -42,12 +56,16 @@ function Form() {
       },
     ]);
     setMessage("");
-    getRes();
-    console.log(allMessages);
+    await getRes();
+    console.log(
+      allMessages.map((message) => {
+        return message.message;
+      })
+    );
   };
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-        handleClick();
+      handleClick();
     }
   };
 
@@ -71,7 +89,6 @@ function Form() {
           position={"absolute"}
           right={{ base: 6, md: 14 }}
           bottom={"21px"}
-          
           onClick={handleClick}
         >
           Send

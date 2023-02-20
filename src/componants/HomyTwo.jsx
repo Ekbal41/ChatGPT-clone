@@ -1,19 +1,20 @@
-import { CheckIcon, InfoOutlineIcon, SunIcon } from "@chakra-ui/icons";
-import {
-  Avatar,
-  Box,
-  Center,
-  Grid,
-  GridItem,
-  Image,
-  Text,
-} from "@chakra-ui/react";
-import React, { useContext } from "react";
+import { Box } from "@chakra-ui/react";
+import React, { useContext, useEffect, useRef } from "react";
+import Typewriter from "typewriter-effect";
 
 import { ApiContext } from "../context/ApiProvider";
 
 function HomyTwo() {
   const { allMessages } = useContext(ApiContext);
+  const blankRef = useRef();
+
+  const scrollDown = () => {
+    blankRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollDown();
+  }, [allMessages]);
 
   return (
     <Box minW={{ md: "965px" }} h={`calc(100vh - 100px)`} className="scroll">
@@ -44,14 +45,29 @@ function HomyTwo() {
                   pr={2}
                   fontSize={13}
                 >
-                  AI
+                {message.type === "bot" ? "🤖" : "😊"}
                 </Box>
               </Box>
-              <Box padding={4}>{message.message}</Box>
+
+              {message.type === "bot" ? (
+                <Box padding={4}>
+                  <Typewriter
+                    options={{
+                      delay: 40,
+                    }}
+                    onInit={(typewriter) => {
+                      typewriter.typeString(message.message).start();
+                    }}
+                  />
+                </Box>
+              ) : (
+                <Box padding={4}>{message.message}</Box>
+              )}
             </Box>
           </Box>
         );
       })}
+      <div ref={blankRef}></div>
     </Box>
   );
 }
