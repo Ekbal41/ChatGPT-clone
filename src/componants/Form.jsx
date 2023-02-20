@@ -12,7 +12,7 @@ function Form() {
     if (message && message.length > 0) {
       const configuration = new Configuration({
         organization: "org-hGs4tZBO2p7ktqxJ9OBXZfl4",
-        apiKey: "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",
+        apiKey: process.env.KEY,
       });
 
       const openai = new OpenAIApi(configuration);
