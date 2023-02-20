@@ -5,7 +5,9 @@ import React from "react";
 function Homyone() {
   return (
     <Box
+    
       minW={{ md: "965px" }}
+  
       h={`calc(100vh - 100px)`}
       padding={{ base: 0, md: 100 }}
       className="scroll"
@@ -41,9 +43,9 @@ function Homyone() {
                 cursor="pointer"
                 className="hov"
                 marginTop={4}
-                W={{base:350}}
+                w={{base:350, md:"auto"}}
               >
-                <Text textAlign={"center"} fontSize={14} marginLeft={4} over>
+                <Text textAlign={"center"} fontSize={14} marginLeft={4} >
                   "Explain quantum computing in simple terms" &gt;
                 </Text>
               </Box>
@@ -55,7 +57,7 @@ function Homyone() {
                 cursor="pointer"
                 className="hov"
                 marginTop={4}
-                W={{base:350}}
+                w={{base:350, md:"auto"}}
               >
                 <Text textAlign={"center"} fontSize={14} marginLeft={4}>
                   "Got any creative ideas for a 10 year old’s birthday?" &gt;
@@ -69,7 +71,7 @@ function Homyone() {
                 cursor="pointer"
                 className="hov"
                 marginTop={4}
-                W={{base:350}}
+                w={{base:350, md:"auto"}}
               >
                 <Text textAlign={"center"} fontSize={14} marginLeft={4}>
                   "How do I make an HTTP request in Javascript?" &gt;
@@ -80,7 +82,7 @@ function Homyone() {
           <GridItem>
             <Center as="div" display="flex" flexDir={"column"}>
               <CheckIcon fontSize={20} ml={4} mb={2} mt={4} />
-              <Text fontSize={20} marginLeft={4} over>
+              <Text fontSize={20} marginLeft={4} >
                 Capabilities
               </Text>
               <Box
@@ -90,7 +92,7 @@ function Homyone() {
                 borderRadius={8}
                 cursor="pointer"
                 className="hov"
-                W={{base:350}}
+                w={{base:350, md:"auto"}}
                 marginTop={4}
               >
                 <Text textAlign={"center"} fontSize={14} marginLeft={4}>
@@ -105,7 +107,7 @@ function Homyone() {
                 cursor="pointer"
                 className="hov"
                 marginTop={4}
-                W={{base:350}}
+                w={{base:350, md:"auto"}}
               >
                 <Text textAlign={"center"} fontSize={14} marginLeft={4}>
                   Allows user to provide follow-up corrections
@@ -116,7 +118,7 @@ function Homyone() {
                 bg={"#f7f7f8"}
                 padding={2}
                 borderRadius={8}
-                W={{base:350}}
+                w={{base:350, md:"auto"}}
                 cursor="pointer"
                 className="hov"
                 marginTop={4}
@@ -130,7 +132,7 @@ function Homyone() {
           <GridItem>
             <Center as="div" display="flex" flexDir={"column"}>
               <InfoOutlineIcon fontSize={20} ml={4} mt={4} mb={2} />
-              <Text fontSize={20} marginLeft={4} over>
+              <Text fontSize={20} marginLeft={4} >
                 Limitations
               </Text>
               <Box
@@ -140,7 +142,7 @@ function Homyone() {
                 borderRadius={8}
                 cursor="pointer"
                 className="hov"
-                W={{base:350}}
+                w={{base:350, md:"auto"}}
                 marginTop={4}
               >
                 <Text textAlign={"center"} fontSize={14} marginLeft={4}>
@@ -154,7 +156,7 @@ function Homyone() {
                 borderRadius={8}
                 cursor="pointer"
                 className="hov"
-                W={{base:350}}
+                w={{base:350, md:"auto"}}
                 marginTop={4}
               >
                 <Text textAlign={"center"} fontSize={14} marginLeft={4}>
@@ -169,7 +171,7 @@ function Homyone() {
                 borderRadius={8}
                 cursor="pointer"
                 className="hov"
-                W={{base:350}}
+                w={{base:350, md:"auto"}}
                 marginTop={4}
               >
                 <Text textAlign={"center"} fontSize={14} marginLeft={4}>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Form from '../componants/Form'
 
 import {
   Container,
@@ -77,7 +78,7 @@ function Home() {
                 className="title"
               >
                 <ChatIcon fontSize={14} marginTop={"6px"} />
-                <Text fontSize={14} marginTop={"3px"} marginLeft={4} over>
+                <Text fontSize={14} marginTop={"3px"} marginLeft={4} >
                   {" "}
                   Hello World Program
                 </Text>
@@ -97,7 +98,7 @@ function Home() {
                 className="title"
               >
                 <StarIcon fontSize={14} marginTop={"6px"} />
-                <Text fontSize={14} marginTop={"3px"} marginLeft={4} over>
+                <Text fontSize={14} marginTop={"3px"} marginLeft={4} >
                   {" "}
                   Upgrage To Plus
                 </Text>
@@ -113,7 +114,7 @@ function Home() {
                 className="title"
               >
                 <MoonIcon fontSize={14} marginTop={"6px"} />
-                <Text fontSize={14} marginTop={"3px"} marginLeft={4} over>
+                <Text fontSize={14} marginTop={"3px"} marginLeft={4} >
                   {" "}
                   Dark Mode
                 </Text>
@@ -129,7 +130,7 @@ function Home() {
                 className="title"
               >
                 <ExternalLinkIcon fontSize={14} marginTop={"6px"} />
-                <Text fontSize={14} marginTop={"3px"} marginLeft={4} over>
+                <Text fontSize={14} marginTop={"3px"} marginLeft={4} >
                   {" "}
                   Update & FAQ
                 </Text>
@@ -145,7 +146,7 @@ function Home() {
                 className="title"
               >
                 <UnlockIcon fontSize={14} marginTop={"6px"} />
-                <Text fontSize={14} marginTop={"3px"} marginLeft={4} over>
+                <Text fontSize={14} marginTop={"3px"} marginLeft={4} >
                   {" "}
                   Log out
                 </Text>
@@ -159,44 +160,10 @@ function Home() {
               flexDir={"column"}
               justifyContent={"space-between"}
             >
-              {isAsked ? <HomyTwo /> : <Homyone />}
+              {/* {isAsked ? <HomyTwo /> : <Homyone />} */}
+              <HomyTwo />
 
-              <Box h={160} padding={4} paddingTop={8}>
-                <Center as="div" position={"relative"}>
-                  <Input
-                    cursor={"pointer"}
-                    border="1px solid #f3f3f3"
-                    className={"shadow"}
-                    padding={3}
-                    width="90%"
-                    variant="unstyled"
-                    marginBottom={4}
-                    autoFocus
-                    onKeyDown={handleKey}
-                  />
-                  <Button
-                    position={"absolute"}
-                    right={{base:6 ,md:14}}
-                    bottom={"21px"}
-                    onClick={handleClick}
-                  >
-                    Send
-                  </Button>
-                </Center>
-                <Text
-                  align={"center"}
-                  fontSize={12}
-                  marginBottom="30px"
-                  color={"#aaaab7"}
-                >
-                  <Text as="u" cursor={"pointer"}>
-                    ChatGPT Feb 13 Version.
-                  </Text>{" "}
-                  Free Research Preview. Our goal is to make AI systems more
-                  natural and safe to interact with. Your feedback will help us
-                  improve.
-                </Text>
-              </Box>
+              <Form />
             </Box>
           </GridItem>
         </Grid>
